@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/20 19:11:16 by sramos        #+#    #+#                 */
-/*   Updated: 2025/02/24 18:35:38 by sramos        ########   odam.nl         */
+/*   Updated: 2025/02/24 19:40:51 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,120 @@ Fixed& Fixed::operator=(const Fixed& fixed){
 	return (*this);
 }
 
-Fixed& Fixed::operator+(const Fixed& fixed){
-
+Fixed Fixed::operator+(const Fixed& fixed)const{
+	Fixed res;
+	res.value = this->value + fixed.value;
+	return (res);
 }
 
-Fixed& Fixed::operator-(const Fixed& fixed){
-
+Fixed Fixed::operator-(const Fixed& fixed)const{
+	Fixed res;
+	res.value = this->value - fixed.value;
+	return (res);
 }
 
-Fixed& Fixed::operator*(const Fixed& fixed){
-
+Fixed Fixed::operator*(const Fixed& fixed)const{
+	Fixed res;
+	res.value = (this->value * fixed.value) >> this->bits;
+	return (res);
 }
 
-Fixed& Fixed::operator/(const Fixed& fixed){
+Fixed Fixed::operator/(const Fixed& fixed)const{
+	Fixed res;
+	res.value = (this->value / fixed.value) >> this->bits;
+	return (res);
+}
 
+Fixed& Fixed::operator++(){
+	this->value++;
+	return  (*this);
+}
+
+Fixed& Fixed::operator--(){
+	this->value--;
+	return (*this);
+}
+
+Fixed Fixed::operator++(int){
+	Fixed temp = *this;
+	this->value++;
+	return (temp);
+}
+
+Fixed Fixed::operator--(int){
+	Fixed temp = *this;
+	this->value--;
+	return(temp);
+}
+
+bool Fixed::operator>(const Fixed& to_cmp){
+	if (this->value > to_cmp.value)
+		return (true);
+	else
+		return (false);
+}
+
+bool Fixed::operator<(const Fixed& to_cmp){
+	if (this->value < to_cmp.value)
+		return (true);
+	else
+		return (false);
+}
+
+bool Fixed::operator==(const Fixed& to_cmp){
+	if (this->value == to_cmp.value)
+		return (true);
+	else
+		return (false);
+}
+
+bool Fixed::operator>=(const Fixed& to_cmp){
+	if (this->value >= to_cmp.value)
+		return (true);
+	else
+		return (false);
+}
+
+bool Fixed::operator<=(const Fixed& to_cmp){
+	if (this->value <= to_cmp.value)
+		return (true);
+	else
+		return(false);
+}
+
+bool Fixed::operator!=(const Fixed& to_cmp){
+	if (this->value != to_cmp.value)
+		return (true);
+	else
+		return (false);
+}
+
+const Fixed& Fixed::min(Fixed& ref_one, Fixed& ref_two){
+	if (ref_one.value < ref_two.value)
+		return (ref_one);
+	else
+		return (ref_two);
+}
+
+const Fixed& Fixed::max(Fixed& ref_one, Fixed& ref_two){
+	if (ref_one.value < ref_two.value)
+		return (ref_two);
+	else
+		return (ref_one);
+}
+
+const Fixed& Fixed::min(const Fixed& ref_one, const Fixed& ref_two){
+	if (ref_one.value < ref_two.value)
+		return (ref_one);
+	else
+		return (ref_two);
+}
+
+const Fixed& Fixed::max(const Fixed& ref_one, const Fixed& ref_two){
+	if (ref_one.value < ref_two.value)
+		return (ref_two);
+	else
+		return (ref_one);
 }
 
 std::ostream& operator<<(std:: ostream& out, const Fixed& fixed){
