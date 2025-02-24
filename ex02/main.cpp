@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/02/20 19:10:45 by sramos        #+#    #+#                 */
-/*   Updated: 2025/02/24 10:59:59 by sramos        ########   odam.nl         */
+/*   Created: 2025/02/21 16:49:55 by sramos        #+#    #+#                 */
+/*   Updated: 2025/02/24 17:54:38 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 
 int main( void ) {
 	Fixed a;
-	Fixed b( a );
-	Fixed c;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-	c = b;
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
 
 	return 0;
 }
