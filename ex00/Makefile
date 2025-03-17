@@ -6,7 +6,7 @@
 #    By: sramos <sramos@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/02/21 14:37:52 by sramos        #+#    #+#                  #
-#    Updated: 2025/02/21 14:38:23 by sramos        ########   odam.nl          #
+#    Updated: 2025/03/17 13:18:06 by sramos        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,20 @@ SRC = main.cpp\
 	Fixed.cpp\
 
 OBJ = $(SRC:.cpp=.o)
+OBJ_DIR = build
+OBJ_PATH = $(OBJ:%=$(OBJ_DIR)/%)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-		@c++ $(CPPFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ_PATH)
+		@c++ $(CPPFLAGS) $(OBJ_PATH) -o $(NAME)
+
+$(OBJ_DIR)/%.o: %.cpp
+		@mkdir -p $(OBJ_DIR)
+		@c++ $(CPPFLAGS) -c $< -o $@
 
 clean:
-		@rm -rf $(OBJ)
+		@rm -rf $(OBJ_DIR)
 
 fclean: clean
 		@rm -f $(NAME)

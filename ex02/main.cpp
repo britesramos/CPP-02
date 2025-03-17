@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/21 16:49:55 by sramos        #+#    #+#                 */
-/*   Updated: 2025/02/24 17:54:38 by sramos        ########   odam.nl         */
+/*   Updated: 2025/03/17 13:51:55 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,34 @@ int main( void ) {
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
 
+	std::cout << "----------------Extra Tests----------------" << std::endl;
+
+	Fixed c(10);
+	Fixed d(2);
+
+	std::cout << c << std::endl;
+	std::cout << d << std::endl;
+	std::cout << d / c << std::endl;
+	if (c == d)
+		std::cout << "C equal to D" << std::endl;
+	if (c != d)
+		std::cout << "C is not equal to D" << std::endl;
+	if (c > d)
+		std::cout << "C is bigger than D" << std::endl;
+	if (c < d)
+		std::cout << "C is smaller than D" << std::endl;
+	if (c >= d)
+		std::cout << "C is bigger or equal to D" << std::endl;
+	if (c <= d)
+		std::cout << "C is smaller or equal to D" << std::endl;
+	std::cout << Fixed::min(c, d) << std::endl;
+	std::cout << --c << std::endl;
+	std::cout << c << std::endl;
+	std::cout << c-- << std::endl;
+	std::cout << c << std::endl;
+	std::cout << c * d << std::endl;
+	std::cout << c << std::endl;
+	std::cout << d << std::endl;
+	
 	return 0;
 }
